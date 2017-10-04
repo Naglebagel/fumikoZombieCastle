@@ -46,6 +46,27 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"Door",
+         "objects":[
+                {
+                 "height":45.2657034786382,
+                 "id":105,
+                 "name":"door",
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":40.9251565697277,
+                 "x":1227.13461896199,
+                 "y":625.65883301296
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"Enemy",
          "objects":[
                 {
@@ -225,7 +246,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":104,
+ "nextobjectid":107,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.3",

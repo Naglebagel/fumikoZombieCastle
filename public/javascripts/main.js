@@ -1,5 +1,35 @@
 
 
+
+const menuState = {
+	create: function () {
+		const nameLabel = this.game.add.text(80, 80, 'Fumiko Zombie Castle', 
+										{font: '50px Arial', fill: '#ffffff'});
+
+		const keyALabel = this.game.add.text(80, 350,
+											'Move Left: "A"',
+											{font: '25px Arial', fill: '#ffffff'});
+		const keyDLabel = this.game.add.text(80, 380,
+											'Move Right: "D"',
+											{font: '25px Arial', fill: '#ffffff'});
+		const keyWLabel = this.game.add.text(80, 410,
+											'Jump: "W"',
+											{font: '25px Arial', fill: '#ffffff'});
+
+		const startLabel = this.game.add.text(80, this.game.world.height-80,
+											'press the "S" key to start',
+											{font: '25px Arial', fill: '#ffffff'});
+
+		const skey = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
+
+		skey.onDown.addOnce(this.play, this);
+	},
+
+	play: function() {
+		this.game.state.start('play')
+	}
+}
+
 PlayState = {};
 
 PlayState.preload = function(){
@@ -7,6 +37,7 @@ PlayState.preload = function(){
 		this.game.load.image('tiles', 'images/tile_castle.png');
 		this.game.load.spritesheet('fumi', 'images/fumikoSprite.png', 24, 32);
 		this.game.load.spritesheet('zombie', 'images/zombieSprite.png',32 ,48);
+		this.game.load.image('door', 'images/door.png');
 	};// end of preload
 
 	PlayState.create = function(){
@@ -209,8 +240,19 @@ PlayState.preload = function(){
 		this.jumpKeyPressed.onUp.add(function(){
 			this.player.jump = false;
 			this.player.body.velocity.y = -jumpSpeed;
+			this. player.body.touching.down;
 		}, this);
 
+
+		//win door
+		door = this.game.add.sprite(1227.13, 629.66, 'door');
+		this.game.physics.arcade.enable(door);
+				door.anchor.set(0,1);
+				door.body.collideWorldBounds =true;
+				door.enableBody = true;
+				door.visible = false;
+
+		this.door = door
 	
 	}; // end of create
 	
@@ -220,6 +262,7 @@ PlayState.preload = function(){
 		this.game.physics.arcade.collide(enemies, this.collisionLayer);
 		this.game.physics.arcade.collide(enemies, this.pathLayer);
 		this.game.physics.arcade.overlap(this.player, enemies, collisionHandler, null, this);
+		this.game.physics.arcade.overlap(this.player, door, youWin, null, this);
 
 		if(this.player.moveRight && !this.player.moveLeft){
 			this.player.animations.play('fumiRight');
@@ -341,10 +384,35 @@ PlayState.preload = function(){
 		}
 	}
 
+	function youWin (){
+		this.game.state.start('win');
+	}
+
+const winState = {
+	create: function() {
+		const winLabel = this.game.add.text(80, 80, 'YOU WON!', 
+										{font: '50px Arial', fill: '#00FF00'});
+
+		const startLabel = this.game.add.text(80, this.game.world.height-80, 
+											'press the "S" key to restart',
+											{font: '25px Arial', fill: '#ffffff'});
+
+		const skey = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
+
+		skey.onDown.addOnce(this.restart, this);
+	},
+
+	restart: function () {
+		this.game.state.start('menu');
+	}
+}
+
 window.onload = function () {
     let game = new Phaser.Game(1344, 736, Phaser.AUTO, 'game');
+    game.state.add('menu', menuState)
+    game.state.start('menu');
     game.state.add('play', PlayState);
-    game.state.start('play');
+    game.state.add('win', winState);
 };
 
 
