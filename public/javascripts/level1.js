@@ -13,6 +13,7 @@ PlayState.preload = function(){
 	PlayState.create = function(){
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+		//create map and add tile set's + layers
 		this.map = this.game.add.tilemap('castleLevel01');
 		this.map.addTilesetImage('tiles', 'tiles');
 
@@ -21,9 +22,11 @@ PlayState.preload = function(){
 		this.collisionLayer = this.map.createLayer('CollisionLayer');
 		this.blockedLayer = this.map.createLayer('BlockedLayer');
 
+		// enable collisions on specific layers
 		this.map.setCollisionBetween(1, 10000, true, 'CollisionLayer');
 		this.map.setCollisionBetween(1, 10000, true, 'PathLayer');
 
+		//create player sprite
 		this.player = this.game.add.sprite(63.20, 673.03, 'fumi');
 		this.player.anchor.set(0, 1);
 
@@ -167,22 +170,19 @@ PlayState.preload = function(){
 			enemy9.animations.play('eRight');
 
 		enemies = this.game.add.physicsGroup();
-		enemies.add(enemy1);
-		enemies.add(enemy2);
-		enemies.add(enemy3);
-		enemies.add(enemy4);
-		enemies.add(enemy5);
-		enemies.add(enemy6);
-		enemies.add(enemy7);
-		enemies.add(enemy8);
-		enemies.add(enemy9);
+			enemies.add(enemy1);
+			enemies.add(enemy2);
+			enemies.add(enemy3);
+			enemies.add(enemy4);
+			enemies.add(enemy5);
+			enemies.add(enemy6);
+			enemies.add(enemy7);
+			enemies.add(enemy8);
+			enemies.add(enemy9);
 		
-		enemies.enableBody = true;
-		enemies.physicsBodyType = Phaser.Physics.ARCADE;
+			enemies.enableBody = true;
+			enemies.physicsBodyType = Phaser.Physics.ARCADE;
 
-		// enemies.animations.add('eRight', [2, 5, 3], 3, true);
-		// enemies.animations.add('eLeft', [1, 6, 4], 3, true);
-	
 
 		// key press listeners
 		this.rightKeyPressed = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
@@ -240,12 +240,16 @@ PlayState.preload = function(){
 	
 	PlayState.update = function(){
 
+		// add collision between layers and objects
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(enemies, this.collisionLayer);
 		this.game.physics.arcade.collide(enemies, this.pathLayer);
+
+		// add collision between objects and functions for what to do
 		this.game.physics.arcade.overlap(this.player, enemies, collisionHandler, null, this);
 		this.game.physics.arcade.overlap(this.player, door, youWin, null, this);
 
+		// movement detection
 		if(this.player.moveRight && !this.player.moveLeft){
 			this.player.animations.play('fumiRight');
 			
@@ -356,7 +360,7 @@ PlayState.preload = function(){
 	};// end of update
 
 
-
+	// what happens between the player and enemies
 	function collisionHandler (player, enemies){
 		if (player.body.velocity.y > 0){
 			enemies.kill();
@@ -369,11 +373,13 @@ PlayState.preload = function(){
 		}
 	};
 
+	// win function
 	function youWin (){
 		levelMusic.stop();
 		this.game.state.start('win');
 	};
-
+	
+	//music loop function
 	function playLevelMusic() {
 			    levelMusic.play('', 0, 1, true);
 					};
