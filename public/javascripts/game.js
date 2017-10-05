@@ -6,3 +6,4 @@ window.onload = function () {
 
     game.state.start('menu');
 };
+

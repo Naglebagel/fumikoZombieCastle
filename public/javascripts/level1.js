@@ -6,8 +6,8 @@ PlayState.preload = function(){
 		this.game.load.spritesheet('fumi', 'images/fumikoSprite.png', 24, 32);
 		this.game.load.spritesheet('zombie', 'images/zombieSprite.png',32 ,48);
 		this.game.load.image('door', 'images/door.png');
-		this.game.load.audio('sfx:kill', 'audio/killSound.mp3');
-		this.game.load.audio('backgroundSong', 'audio/backgroundSong.mp3');
+		this.game.load.audio('sfx:kill', 'audio/killSound.ogg');
+		this.game.load.audio('backgroundSong', 'audio/backgroundSong.ogg');
 	};// end of preload
 
 	PlayState.create = function(){
@@ -37,7 +37,8 @@ PlayState.preload = function(){
 
 			levelMusic = this.game.add.audio('backgroundSong');
 
-				levelMusic.play();
+				levelMusic.play('', 0, 1, true);
+				levelMusic.onLoop.add(playLevelMusic, this);
 
 
 		//player movement
@@ -363,14 +364,19 @@ PlayState.preload = function(){
 		}
 		else {
 			this.sfx.kill.play();
+			levelMusic.stop();
 			this.game.state.restart();
 		}
-	}
+	};
 
 	function youWin (){
 		levelMusic.stop();
 		this.game.state.start('win');
-	}
+	};
+
+	function playLevelMusic() {
+			    levelMusic.play('', 0, 1, true);
+					};
 
 
 
