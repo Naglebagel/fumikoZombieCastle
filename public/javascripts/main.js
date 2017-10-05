@@ -2,27 +2,35 @@
 
 
 const menuState = {
+
+	preload: function (){
+		this.game.load.image('background', 'images/darkCastleBack.png');
+	},
+
 	create: function () {
+
+		this.game.add.image(0,0, 'background');
+
 		const nameLabel = this.game.add.text(80, 80, 'Fumiko Zombie Castle', 
-										{font: '50px Arial', fill: '#ffffff'});
+										{font: '50px Arial', fill: '#f94639', textalign: 'center'});
 
 		const controlsLabel = this.game.add.text(80, 310,
 											'Game Controls:',
-											{font: '35px Arial', fill: '#ffffff'});
+											{font: '35px Arial', fill: '#f94639'});
 
 		const keyALabel = this.game.add.text(80, 350,
 											'Move Left: "A"',
-											{font: '25px Arial', fill: '#ffffff'});
+											{font: '25px Arial', fill: '#f94639'});
 		const keyDLabel = this.game.add.text(80, 380,
 											'Move Right: "D"',
-											{font: '25px Arial', fill: '#ffffff'});
+											{font: '25px Arial', fill: '#f94639'});
 		const keyWLabel = this.game.add.text(80, 410,
 											'Jump: "W"',
-											{font: '25px Arial', fill: '#ffffff'});
+											{font: '25px Arial', fill: '#f94639'});
 
 		const startLabel = this.game.add.text(80, this.game.world.height-80,
 											'press the "S" key to start',
-											{font: '25px Arial', fill: '#ffffff'});
+											{font: '25px Arial', fill: '#f94639'});
 
 		const skey = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
 
@@ -32,7 +40,7 @@ const menuState = {
 	play: function() {
 		this.game.state.start('play')
 	}
-}
+};
 
 PlayState = {};
 
@@ -42,6 +50,7 @@ PlayState.preload = function(){
 		this.game.load.spritesheet('fumi', 'images/fumikoSprite.png', 24, 32);
 		this.game.load.spritesheet('zombie', 'images/zombieSprite.png',32 ,48);
 		this.game.load.image('door', 'images/door.png');
+		this.game.load.audio('sfx:kill', 'audio/killSound.mp3')
 	};// end of preload
 
 	PlayState.create = function(){
@@ -64,7 +73,7 @@ PlayState.preload = function(){
 		//enable physics for player
 		this.game.physics.arcade.enable(this.player);
 
-		
+		//set gravity 
 		this.GRAVITY = 1200;
 
 
@@ -247,6 +256,11 @@ PlayState.preload = function(){
 			this. player.body.touching.down;
 		}, this);
 
+		// sfx for kill
+			this.sfx = {
+				kill: this.game.add.audio('sfx:kill')
+			};
+
 
 		//win door
 		door = this.game.add.sprite(1227.13, 629.66, 'door');
@@ -382,8 +396,10 @@ PlayState.preload = function(){
 	function collisionHandler (player, enemies){
 		if (player.body.velocity.y > 0){
 			enemies.kill();
+			this.sfx.kill.play();
 		}
 		else {
+			this.sfx.kill.play();
 			this.game.state.restart();
 		}
 	}
@@ -418,6 +434,13 @@ window.onload = function () {
     game.state.add('play', PlayState);
     game.state.add('win', winState);
 };
+
+const myAudio = new Audio('audio/backgroundSong.mp3'); 
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+myAudio.play();
 
 
 
