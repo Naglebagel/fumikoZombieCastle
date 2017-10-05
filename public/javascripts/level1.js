@@ -183,6 +183,7 @@ PlayState.preload = function(){
 			enemies.enableBody = true;
 			enemies.physicsBodyType = Phaser.Physics.ARCADE;
 
+	
 
 		// key press listeners
 		this.rightKeyPressed = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
@@ -357,6 +358,8 @@ PlayState.preload = function(){
 			enemy9.body.velocity.setTo(40, 0);
 			enemy9.animations.play('eRight');
 		}
+
+
 	};// end of update
 
 
