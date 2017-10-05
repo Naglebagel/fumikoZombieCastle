@@ -6,6 +6,10 @@ const menuState = {
 		const nameLabel = this.game.add.text(80, 80, 'Fumiko Zombie Castle', 
 										{font: '50px Arial', fill: '#ffffff'});
 
+		const controlsLabel = this.game.add.text(80, 310,
+											'Game Controls:',
+											{font: '35px Arial', fill: '#ffffff'});
+
 		const keyALabel = this.game.add.text(80, 350,
 											'Move Left: "A"',
 											{font: '25px Arial', fill: '#ffffff'});
@@ -90,8 +94,8 @@ PlayState.preload = function(){
 			this.game.physics.arcade.enable(enemy1);
 				enemy1.anchor.set(0,-0.6);
 				enemy1.frame = 3; 
-				enemy1.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy1.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy1.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy1.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy1.body.collideWorldBounds =true;
 				enemy1.body.velocity.setTo(-40, 0);
@@ -99,8 +103,8 @@ PlayState.preload = function(){
 			this.game.physics.arcade.enable(enemy2);
 				enemy2.anchor.set(0,-0.6);
 				enemy2.frame = 3;
-				enemy2.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy2.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy2.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy2.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy2.body.collideWorldBounds =true;
 				enemy2.body.velocity.setTo(40, 0);
@@ -108,8 +112,8 @@ PlayState.preload = function(){
 			this.game.physics.arcade.enable(enemy3);
 				enemy3.anchor.set(0,-0.6);
 				enemy3.frame = 3;
-				enemy3.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy3.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy3.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy3.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy3.body.collideWorldBounds =true;
 			enemy3.body.velocity.setTo(-40, 0);
@@ -117,8 +121,8 @@ PlayState.preload = function(){
 			this.game.physics.arcade.enable(enemy4);
 				enemy4.anchor.set(0,-0.6);
 				enemy4.frame = 3;
-				enemy4.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy4.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy4.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy4.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy4.body.collideWorldBounds =true;
 			enemy4.body.velocity.setTo(40, 0);
@@ -126,8 +130,8 @@ PlayState.preload = function(){
 			this.game.physics.arcade.enable(enemy5);
 				enemy5.anchor.set(0,-0.6);
 				enemy5.frame = 3;
-				enemy5.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy5.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy5.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy5.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy5.body.collideWorldBounds =true;
 				enemy5.body.velocity.setTo(-40, 0);
@@ -135,8 +139,8 @@ PlayState.preload = function(){
 			this.game.physics.arcade.enable(enemy6);
 				enemy6.anchor.set(0,-0.6);
 				enemy6.frame = 3;
-				enemy6.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy6.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy6.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy6.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy6.body.collideWorldBounds =true;
 				enemy6.body.velocity.setTo(40, 0);
@@ -144,8 +148,8 @@ PlayState.preload = function(){
 				this.game.physics.arcade.enable(enemy7);
 				enemy7.anchor.set(0,-0.6);
 				enemy7.frame = 3;
-				enemy7.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy7.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy7.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy7.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy7.body.collideWorldBounds =true;
 				enemy7.body.velocity.setTo(-40, 0);
@@ -153,8 +157,8 @@ PlayState.preload = function(){
 			this.game.physics.arcade.enable(enemy8);
 				enemy8.anchor.set(0,-0.6);
 				enemy8.frame = 3;
-				enemy8.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy8.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy8.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy8.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy8.body.collideWorldBounds =true;
 				enemy8.body.velocity.setTo(40, 0);
@@ -162,8 +166,8 @@ PlayState.preload = function(){
 			this.game.physics.arcade.enable(enemy9);
 				enemy9.anchor.set(0,0.7);
 				enemy9.frame = 3;
-				enemy9.animations.add('eRight', [0, 2, 1], 3, true);
-				enemy9.animations.add('eLeft', [4, 5, 6], 3, true);
+				enemy9.animations.add('eRight', [2, 3, 6], 3, true);
+				enemy9.animations.add('eLeft', [1, 5, 4], 3, true);
 				enableBody = true;
 				enemy9.body.collideWorldBounds =true;
 				enemy9.body.velocity.setTo(40, 0);
