@@ -14,7 +14,7 @@ const winState = {
 				winMusic.play('', 0, 0.6, true);
 				winMusic.onLoop.add(this.playWinMusic, this);
 
-		const winLabel = this.game.add.text(175, 200, 'YOU WON!', 
+		const winLabel = this.game.add.text(150, 200, 'YOU WON!', 
 										{font: '200px Arial', fill: '#ffd53d'});
 
 		const startLabel = this.game.add.text(80, this.game.world.height-80, 
