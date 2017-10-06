@@ -5,6 +5,7 @@ PlayState.preload = function(){
 		this.game.load.image('tiles', 'images/tile_castle.png');
 		this.game.load.spritesheet('fumi', 'images/fumikoSprite.png', 24, 32);
 		this.game.load.spritesheet('zombie', 'images/zombieSprite.png',32 ,48);
+		// this.game.load.spritesheet('bat', 'images/batSprite.gif', 32, 32);
 		this.game.load.image('door', 'images/door.png');
 		this.game.load.audio('sfx:kill', 'audio/killSound.ogg');
 		this.game.load.audio('backgroundSong', 'audio/backgroundSong.ogg');
@@ -147,6 +148,38 @@ PlayState.preload = function(){
 				enableBody = true;
 				enemy9.body.collideWorldBounds =true;
 				enemy9.body.velocity.setTo(40, 0);
+		// enemy10 = this.game.add.sprite(1023.25, 409.78, 'bat');
+		// 	this.game.physics.arcade.enable(enemy10);
+		// 		enemy10.anchor.set(0,0.7);
+		// 		enemy10.frame = 3;
+		// 		enemy10.animations.add('fly', [0, 1, 2, 3, 4], 5, true);
+		// 		enableBody = true;
+		// 		enemy10.body.collideWorldBounds =true;
+		// 		enemy10.body.velocity.setTo(40, 0);
+		// enemy11 = this.game.add.sprite(1023.25, 409.78, 'bat');
+		// 	this.game.physics.arcade.enable(enemy11);
+		// 		enemy11.anchor.set(0,0.7);
+		// 		enemy11.frame = 3;
+		// 		enemy11.animations.add('fly', [0, 1, 2, 3, 4], 5, true);
+		// 		enableBody = true;
+		// 		enemy11.body.collideWorldBounds =true;
+		// 		enemy11.body.velocity.setTo(40, 0);
+		// enemy12 = this.game.add.sprite(1023.25, 409.78, 'bat');
+		// 	this.game.physics.arcade.enable(enemy12);
+		// 		enemy12.anchor.set(0,0.7);
+		// 		enemy12.frame = 3;
+		// 		enemy12.animations.add('fly', [0, 1, 2, 3, 4], 5, true);
+		// 		enableBody = true;
+		// 		enemy12.body.collideWorldBounds =true;
+		// 		enemy12.body.velocity.setTo(40, 0);
+		// enemy13 = this.game.add.sprite(1023.25, 409.78, 'bat');
+		// 	this.game.physics.arcade.enable(enemy13);
+		// 		enemy13.anchor.set(0,0.7);
+		// 		enemy13.frame = 3;
+		// 		enemy13.animations.add('fly', [0, 1, 2, 3, 4], 5, true);
+		// 		enableBody = true;
+		// 		enemy13.body.collideWorldBounds =true;
+		// 		enemy13.body.velocity.setTo(40, 0);						
 
 
 

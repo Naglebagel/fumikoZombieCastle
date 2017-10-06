@@ -1,0 +1,4 @@
+The user will be able to jump.
+The user will be able to kill enemies. 
+To win the user will need to reach the door at the end of the level.
+The user will be able to throw shurikens to kill enemies
