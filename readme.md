@@ -1,3 +1,7 @@
+![alt text](https://github.com/Naglebagel/fumikoZombieCastle/blob/master/public/images/startScreen.png "Start Screen")
+
+
+
 Used the Phaser game library and Javascript to create a single player platformer game.
 
 This is a basic platformer game, with the objective being to reach the end to win.
