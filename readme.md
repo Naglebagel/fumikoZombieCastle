@@ -1,6 +1,6 @@
 ![alt text](https://github.com/Naglebagel/fumikoZombieCastle/blob/master/public/images/startScreen.png "Start Screen")
 
-
+Game link: https://fumikozombiecastle.herokuapp.com/
 
 Used the Phaser game library and Javascript to create a single player platformer game.
 

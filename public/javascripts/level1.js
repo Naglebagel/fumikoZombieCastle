@@ -251,7 +251,6 @@ PlayState.preload = function(){
 		this.jumpKeyPressed.onUp.add(function(){
 			this.player.jump = false;
 			this.player.body.velocity.y = -jumpSpeed;
-			this. player.body.touching.down;
 		}, this);
 
 		// sfx for kill
